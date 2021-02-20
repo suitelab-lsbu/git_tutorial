@@ -81,5 +81,5 @@ def modulus(a, b):
         return jsonify({'Value Error': "Only numbers Please"})
     if b == 0:
         return jsonify({'Value Error': "Cannot modulo by zero"})
-    return jsonify({'result': a // b})
+    return jsonify({'result': a % b})
 ```
