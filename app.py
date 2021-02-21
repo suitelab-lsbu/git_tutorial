@@ -19,22 +19,42 @@ def multiply(a, b):
 
 @app.route('/add/<a>/<b>', methods=['GET'])
 def add(a, b):
-    return jsonify({'result': f"{a} + {b}"})
+    try:
+        a, b = float(a), float(b)
+    except ValueError:
+        return jsonify({'Value Error': "Only numbers Please"})
+    return jsonify({'result': a + b})
 
 
 @app.route('/subtract/<a>/<b>', methods=['GET'])
 def subtract(a, b):
-    return jsonify({'result': f"{a} - {b}"})
+    try:
+        a, b = float(a), float(b)
+    except ValueError:
+        return jsonify({'Value Error': "Only numbers Please"})
+    return jsonify({'result': a - b})
 
 
 @app.route('/divide/<a>/<b>', methods=['GET'])
 def divide(a, b):
-    return jsonify({'result': f"{a} / {b}"})
+    try:
+        a, b = float(a), float(b)
+    except ValueError:
+        return jsonify({'Value Error': "Only numbers Please"})
+    if b == 0:
+        return jsonify({'Value Error': "Cannot divide by zero"})
+    return jsonify({'result': a / b})
 
 
 @app.route('/mod/<a>/<b>', methods=['GET'])
 def modulus(a, b):
-    return jsonify({'result': f"{a} % {b}"})
+    try:
+        a, b = float(a), float(b)
+    except ValueError:
+        return jsonify({'Value Error': "Only numbers Please"})
+    if b == 0:
+        return jsonify({'Value Error': "Cannot modulo by zero"})
+    return jsonify({'result': a % b})
 
 
 if __name__ == '__main__':
